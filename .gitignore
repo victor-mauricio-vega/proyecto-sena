@@ -1,0 +1,10 @@
+# Archivos de entorno virtual
+venv/
+.env
+.env.*
+
+
+# Archivos y directorios de Python
+env/
+venv/
+.venv/

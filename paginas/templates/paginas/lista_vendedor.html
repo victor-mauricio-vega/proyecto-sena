@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block titulo %}Vendeores{% endblock titulo %}
+
+{% block contenido %}
+<div class="col">
+    <div class="row justify-content-center mt-2">
+        <div class="card col-3">
+            <div class="d-flex justify-content-center mt-2">
+                <img src="{{auto.imagen.url}}" style="border-radius: 20px;">
+            </div>
+            <div class="card-body">
+                <h3 class="text-center">Datos del vendedor</h3>
+                <hr>
+                {% if vendedor %}
+                <p class="card-text"><strong>Nombre:</strong> {{ vendedor.nombre }}</p>
+                <p class="card-text"><strong>Apellido:</strong> {{ vendedor.apellido }}</p>
+                <p class="card-text"><strong>Telefono:</strong> {{ vendedor.telefono }}</p>
+                <p class="card-text"><strong>Correo:</strong> {{ vendedor.correo }}</p>
+                {% else %}
+                <p>No hay vendedores disponibles.</p>
+                {% endif %}
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'vehiculos'%}" class="btn btn-primary">Volver</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

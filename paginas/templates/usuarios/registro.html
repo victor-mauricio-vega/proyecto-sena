@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block titulo %}Registro{% endblock titulo %}
+
+{% block contenido %}
+{%load crispy_forms_tags%}
+<body>
+  
+  <form action="{%url 'registro'%}" method="post"> 
+    {% csrf_token %}
+    <div class="card mx-auto mt-4" style="width: 30rem;">
+      <div class="card-body">
+        <h2>Registro de usuarios</h2>
+        <hr>
+        {{form | crispy }}
+        
+       <a href="{%url 'login'%}">Iniciar Sesion</a>
+       <div class="d-flex justify-content-center mt-4 ">
+         <button type="submit" class="btn btn-primary">Registrarse</button>
+       
+      </div>
+    </div>
+</body>
+{% endblock contenido %}

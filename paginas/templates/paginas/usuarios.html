@@ -1,0 +1,36 @@
+{% extends "plantilla.html" %}
+
+{% block titulo %}Clientes{% endblock titulo %}
+
+{% block contenido %}
+<div class="col p-5 pt-2 mt-3 container-fluid">
+    <h3><i class="fa-solid fa-users mr-2" aria-hidden="true"></i>Clientes</h3>
+<hr>
+{% if users %}
+<div class="table-responsive mt-2">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {%for usuario in users%}
+            <tr id="usuario {{usuario.identificacion}}">
+                <td>{{usuario.first_name}}</td>
+                <td>{{usuario.last_name}}</td>
+                <td>{{usuario.email}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2 class="text-center">No Hay Registros Para Mostrar</h2>
+    {% endif %}
+</div>
+  
+{% endblock contenido %}
+
