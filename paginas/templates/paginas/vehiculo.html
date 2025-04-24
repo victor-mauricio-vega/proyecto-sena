@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+
+
+
 {% block titulo %}Vehiculos{% endblock titulo %}
 {% block contenido %}
 <form action="{% url 'vehiculos' %}" method="GET">
@@ -39,9 +42,48 @@
                         <p class="card-text"><strong>Estado:</strong> {{auto.id_estado.nombre}}</p>
                         <p class="card-text"><strong>Precio:</strong> {{auto.precio}}</p>
                         <p class="card-text"><strong>Categoria:</strong> {{auto.id_categoria.nombre}}</p>
-                        <div class="d-flex justify-content-center">
-                            <a href="{%url 'listar_info' id=auto.id_auto%}" class="btn btn-primary"> ver datos del vendedor</a>
+                        
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#vendedorModal{{auto.id}}">
+                                Ver Datos del Vendedor
+                            </button>
                         </div>
+                        
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="vendedorModal{{auto.id}}" tabindex="-1" aria-labelledby="vendedorModalLabel{{ auto.id_auto }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- puedes ajustar el tamaño -->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="vendedorModalLabel{{ auto.id_auto }}">Datos del vendedor</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-4 text-center">
+                                                <img src="{{ auto.imagen.url }}" class="img-fluid rounded" style="border-radius: 20px;">
+                                            </div>
+                                            <div class="col-md-8">
+                                                {% if auto.identificacion %}
+                                                <p><strong>Nombre:</strong> {{ auto.identificacion.nombre }}</p>
+                                                <p><strong>Apellido:</strong> {{ auto.identificacion.apellido }}</p>
+                                                <p><strong>Teléfono:</strong> {{ auto.identificacion.telefono }}</p>
+                                                <p><strong>Correo:</strong> {{ auto.identificacion.correo }}</p>
+                                                {% else %}
+                                                <p>No hay vendedores disponibles.</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{% url 'vehiculos' %}" class="btn btn-secondary">Volver</a>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>

@@ -146,9 +146,9 @@ def lista_vendedor(request,id):
         vendedor.save()            
     return redirect('listar_info')
 
-def listar_info(request, id):
+def listar_info(request, marca):
     try:
-        auto = Automovil.objects.get(id_auto=id)
+        auto = Automovil.objects.get(marca=marca)
         vendedor = auto.identificacion
         if vendedor:
             

@@ -91,9 +91,9 @@ DATABASES = {
         'ENGINE': 'mssql', # servicio sql server "mysql"
         'NAME': 'concesionario', # Nombre de base de datos sql server
         'USER':'sa', # login sql server
-        'HOST':'DESKTOP-DVISIE8\SQLEXPRESS', # server name de sql server
+        'HOST':'localhost', # server name de sql server
         'PORT':'',
-        'PASSWORD':'Mauro', # contraseña que se encuentra
+        'PASSWORD':'Mauro123', # contraseña que se encuentra
         'OPTIONS':{
             'driver': 'ODBC Driver 17 for SQL Server',
         }
